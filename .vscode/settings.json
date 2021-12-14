@@ -11,7 +11,5 @@
 		"vue",
 		"markdown",
 		"svelte"
-	],
-	"javascript.suggestionActions.enabled": false,
-	"typescript.suggestionActions.enabled": false
+	]
 }
