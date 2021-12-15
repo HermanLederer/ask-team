@@ -63,12 +63,11 @@
 <style lang="scss">
   @use "sass:color";
   @import "../resources//scss/colors.scss";
-
-  $trans: 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  @import "../resources//scss/transitions.scss";
 
   article {
     padding: 1rem;
-    border: 1px rgba(0, 0, 0, 0.6) solid;
+    border: 1px rgba(0, 0, 0, 0.1) solid;
     border-radius: 0.5rem;
     transition: $trans;
 
@@ -77,16 +76,11 @@
     }
 
     button {
-      width: 100%;
-      height: 3rem;
-      padding: 01rem;
       position: relative;
       margin-bottom: 0.25rem;
 
       background: none;
       text-align: left;
-      border: 1px rgba(0, 0, 0, 0.4) solid;
-      border-radius: 0.5rem;
 
       overflow: hidden;
 
