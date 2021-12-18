@@ -50,7 +50,7 @@
 
       <input type="button" value="+" class="add-option" on:click={addOption} />
 
-      <span class="answers-warning">People ca also give open answers</span>
+      <span class="answers-warning">People can also give open answers</span>
     </form>
   </div>
 

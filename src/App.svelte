@@ -1,6 +1,6 @@
 <script lang="ts">
   import Login from "./lib/Login.svelte";
-  import Home from "./lib/Home.svelte";
+  import Questions from "./lib/Questions.svelte";
   import Collections from "./lib/Collections.svelte";
   import NewPost from "./lib/NewPost.svelte";
   import Nav from "./lib/Nav.svelte";
@@ -17,7 +17,7 @@
         window.fab.show();
       }}
     />
-    <Home />
+    <Questions />
     <Collections />
   </div>
 </main>

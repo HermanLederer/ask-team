@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import IconQuestions from "svelte-material-icons/Forum.svelte";
   import IconCollections from "svelte-material-icons/ChartArc.svelte";
 
   // Visibility
@@ -39,7 +40,11 @@
           }}
         >
           <div class="icon-box">
-            <IconCollections size="1.5rem" />
+            {#if i == 0}
+              <IconQuestions size="1.5rem" />
+            {:else}
+              <IconCollections size="1.5rem" />
+            {/if}
           </div>
           <p>{item}</p>
         </button>

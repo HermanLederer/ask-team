@@ -9,33 +9,39 @@
   }
 </script>
 
-<section id="login">
+<section>
   <div class="container">
-    <h2>Welcome to Ask Team</h2>
+    <h2>Welcome to AskTeam.</h2>
     <p>
-      Please log in to ocntinue with your Team Ask account or visit as a guest.
+      Please log in to continue with your Team Ask account or visit as a guest.
     </p>
-    <form on:submit|preventDefault={()=>{authenticated()}}>
+    <form
+      on:submit|preventDefault={() => {
+        authenticated();
+      }}
+    >
       <label for="email">Email</label>
       <input type="email" name="email" />
 
       <label for="password">Password</label>
       <input type="password" name="password" />
 
-      <a href="#">Forgot your password?</a>
+      <a class="iforgor" href="#reset-password">Forgot your password?</a>
 
       <input type="submit" value="Login" />
-      <input type="submit" value="Or continue as guest" />
+      <input type="submit" value="Or continue as guest" class="is-ghost" />
     </form>
 
-    <Anonymity />
+    <div class="anon-wrapper">
+      <Anonymity />
+    </div>
   </div>
 </section>
 
 <style lang="scss">
   @import "../resources/scss/colors.scss";
 
-  #login {
+  section {
     height: 100vh;
     background: $accent;
     color: white;
@@ -44,5 +50,72 @@
   .container {
     position: relative;
     height: 100%;
+    padding: 2rem 1rem;
+
+    & > * {
+      margin: 0 1rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
+
+    form {
+      margin: 0;
+
+      & > * {
+        margin: 0 1rem;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        height: 4rem;
+        margin-left: 0;
+        margin-right: 0;
+
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;;
+        border: none;
+      }
+    }
+  }
+
+  .container form {
+    position: relative;
+
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+
+  label {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 2rem;
+  }
+
+  .iforgor {
+    display: block;
+  }
+
+  input[type="submit"] {
+    width: calc(100% - 2rem);
+    height: 3rem;
+
+    background: white;
+    border: none;
+    border-radius: 1.5rem;
+    font-weight: 600;
+
+    &.is-ghost {
+      background: none;
+      color: white;
+    }
   }
 </style>
