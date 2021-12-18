@@ -3,10 +3,9 @@
   import Anonymity from "./lib/Anonymity.svelte";
   import Post from "./lib/Post.svelte";
   import NewPost from "./lib/NewPost.svelte";
+  import Header from "./lib/Header.svelte";
 
   import type { Content } from "./lib/Post.svelte";
-
-  let showHeader = true;
 
   function randomAnswers() {
     const res = [];
@@ -35,15 +34,6 @@
     { question: "What?", answers: randomAnswers() },
     { question: "What?", answers: randomAnswers() },
   ];
-
-  window.header = {
-    show() {
-      showHeader = true;
-    },
-    hide() {
-      showHeader = false;
-    },
-  };
 </script>
 
 <!-- <Login /> -->
@@ -60,42 +50,11 @@
 
 <NewPost />
 
-<header class:is-hidden={!showHeader}>
-  <!-- <img src="" alt="Ask Team" /> -->
-  <h1>Ask Team</h1>
-</header>
+<Header />
 
 <style lang="scss">
   @use "sass:color";
   @import "./resources//scss/colors.scss";
-
-  header {
-    width: 100%;
-    height: 4rem;
-    padding: 0 2rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background: adjust-color($color: mix($accent, #fff, 20%), $alpha: -0.2);
-    backdrop-filter: blur(0.5rem);
-    box-shadow: 0 0 2rem adjust-color($color: $accent, $alpha: -0.9);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 300ms ease-in-out;
-
-    h1 {
-      font-size: 1rem;
-      text-align: center;
-      color: mix($accent, #000, 10%);
-    }
-
-    &.is-hidden {
-      top: -4rem;
-    }
-  }
 
   main > .container {
     margin-top: 6rem;
