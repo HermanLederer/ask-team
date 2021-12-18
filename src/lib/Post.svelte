@@ -80,6 +80,8 @@
       margin-bottom: 0.25rem;
 
       background: none;
+      color: rgba(0, 0, 0, 0.8);
+      border-color: rgba(0, 0, 0, 0.6);
       text-align: left;
 
       overflow: hidden;
@@ -90,8 +92,8 @@
         top: 0;
         left: 0;
 
-        background: $accent;
-        opacity: 0.2;
+        background: black;
+        opacity: 0.025;
 
         transition: $trans;
         transition-delay: 150ms;
@@ -112,6 +114,7 @@
       span {
         display: block;
         position: relative;
+        font-weight: 600;
       }
     }
 
@@ -131,19 +134,21 @@
       border-color: adjust-color($color: $accent, $alpha: -0.4);
 
       button {
-        border-color: adjust-color($color: $accent, $alpha: -0.8);
+        border-color: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.4);
         cursor: default;
 
         &.is-selected {
           border-color: $accent;
 
           .bar {
-            opacity: 1;
+            background: $accent;
+            opacity: 0.2;
             transition-delay: 0ms;
           }
 
           span {
-            color: white;
+            color: $accent;
           }
         }
 
