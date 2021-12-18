@@ -1,67 +1,59 @@
 <script lang="ts">
   import Login from "./lib/Login.svelte";
-  import Anonymity from "./lib/Anonymity.svelte";
-  import Post from "./lib/Post.svelte";
+  import Home from "./lib/Home.svelte";
+  import Collections from "./lib/Collections.svelte";
   import NewPost from "./lib/NewPost.svelte";
-  import Header from "./lib/Header.svelte";
+  import Nav from "./lib/Nav.svelte";
 
-  import type { Content } from "./lib/Post.svelte";
-
-  function randomAnswers() {
-    const res = [];
-
-    const amount = 2 + Math.random() * 3;
-
-    for (let i = 0; i < amount; i++) {
-      res.push({
-        name: `Option ${i + 1}`,
-        result: 1 + Math.round(Math.random() * 19),
-      });
-    }
-
-    return res;
-  }
-
-  let posts: Content[] = [
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-  ];
+  let pos = 0;
 </script>
 
-<!-- <Login /> -->
-
 <main>
-  <div class="container">
-    <Anonymity />
-
-    {#each posts as post}
-      <Post content={post} vote={-1} />
-    {/each}
+  <div class="screens" style={`transform: translateX(-${pos * 100}vw)`}>
+    <Login
+      on:authenticated={() => {
+        pos = 1;
+        window.nav.show();
+        window.fab.show();
+      }}
+    />
+    <Home />
+    <Collections />
   </div>
 </main>
 
+<Nav
+  on:navigate={(e) => {
+    switch (e.detail.to) {
+      case 1:
+        pos = 2;
+        break;
+      default:
+        pos = 1;
+        break;
+    }
+
+    if (pos === 1) window.fab.show();
+    else window.fab.hide();
+  }}
+/>
+
 <NewPost />
 
-<Header />
-
 <style lang="scss">
-  @use "sass:color";
-  @import "./resources//scss/colors.scss";
+  @import "./resources/scss/transitions.scss";
 
-  main > .container {
-    margin-top: 6rem;
-    padding: 1rem;
+  main {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
 
+  .screens {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 100vw);
+    grid-auto-rows: calc(100vh - 5rem);
+    transform: translateX(0);
+    transition: $trans;
   }
 </style>

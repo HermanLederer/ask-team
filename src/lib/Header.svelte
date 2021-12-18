@@ -1,30 +1,11 @@
 <script lang="ts">
-  import IconMenu from "svelte-material-icons/Menu.svelte";
-  import IconTune from "svelte-material-icons/Tune.svelte";
-
-  let showHeader = true;
-
-  window.header = {
-    show() {
-      showHeader = true;
-    },
-    hide() {
-      showHeader = false;
-    },
-  };
+  import IconLogo from "svelte-material-icons/Forum.svelte";
 </script>
 
-<header class:is-hidden={!showHeader}>
-  <div class="container">
-    <!-- <img src="" alt="Ask Team" /> -->
-    <h1>Ask Team</h1>
-
-    <button id="btn-menu" on:click>
-      <IconMenu size="1rem" />
-    </button>
-
-    <!-- <IconMenu /> -->
-    <div />
+<header>
+  <div class="center">
+    <IconLogo size="4rem" />
+    <h1>AskTeam</h1>
   </div>
 </header>
 
@@ -35,39 +16,27 @@
 
   header {
     width: 100%;
-    height: 4rem;
-    position: fixed;
-    top: 0;
-    left: 0;
+    height: 40vh;
 
-    background: #fff;
-    border-bottom: 1px $accent solid;
+    padding: 0;
 
-    transition: 300ms ease-in-out;
+    background: mix($accent, white, 5%);
+    color: mix($accent, #000, 80%);
 
-    .container {
-      height: 100%;
-      padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+    .center {
+      text-align: center;
     }
 
     h1 {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
+      margin-top: 1rem;
 
-      font-size: 1rem;
-      text-align: center;
-      color: mix($accent, #000, 10%);
-    }
-
-    &.is-hidden {
-      top: -4rem;
+      font-size: 2rem;
+      font-weight: 800;
     }
   }
 

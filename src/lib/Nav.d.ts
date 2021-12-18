@@ -1,5 +1,5 @@
 declare interface Window {
-  header: {
+  nav: {
     show();
     hide();
   };

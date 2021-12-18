@@ -1,6 +1,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  // Visibility
+  let showFab = false;
+
+  window.fab = {
+    show() {
+      showFab = true;
+    },
+    hide() {
+      showFab = false;
+    },
+  };
+
+  // New Post action
   let isOpen = false;
 
   let options = ["", ""];
@@ -21,7 +34,7 @@
   onMount(updateDelays);
 </script>
 
-<section class:is-open={isOpen}>
+<section class:is-open={isOpen} class:is-hidden={!showFab}>
   <div class="container">
     <form id="new-post-form">
       <h2>New poll</h2>
@@ -47,11 +60,9 @@
       updateDelays();
       isOpen = !isOpen;
       document.body.style.overflow = isOpen ? "hidden" : "auto";
-      if (isOpen){
-        window.header.hide();
-        options = ["", ""]
+      if (isOpen) {
+        options = ["", ""];
       }
-      else window.header.show();
     }}
   >
     <span class="icon">+</span>
@@ -68,8 +79,11 @@
     width: 4rem;
     height: 4rem;
     position: fixed;
-    right: 1rem;
-    bottom: 1rem;
+    left: 0;
+    right: 0;
+    bottom: 3rem;
+
+    margin: auto;
 
     background: white;
     border-radius: 50%;
@@ -194,7 +208,7 @@
 
     .fab {
       width: 8rem;
-      bottom: 4rem;
+      bottom: 2rem;
 
       background: $accent;
       color: white;
@@ -204,5 +218,9 @@
         margin-left: 1rem;
       }
     }
+  }
+
+  section.is-hidden {
+    transform: scale(0);
   }
 </style>
