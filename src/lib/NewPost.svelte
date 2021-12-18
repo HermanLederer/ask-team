@@ -80,7 +80,7 @@
     form {
       height: 100%;
       padding: 2rem;
-      padding-top: 6rem;
+      padding-top: 2rem;
 
       opacity: 0;
 
