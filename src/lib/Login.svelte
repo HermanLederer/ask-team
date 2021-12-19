@@ -113,7 +113,7 @@
     font-weight: 600;
 
     &.is-ghost {
-      background: none;
+      background: rgba(255, 255, 255, 0.1);
       color: white;
     }
   }
