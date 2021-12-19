@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Login from "./lib/Login.svelte";
-  import Questions from "./lib/Questions.svelte";
-  import Collections from "./lib/Collections.svelte";
+  import Login from "./lib/screens/Login.svelte";
+  import Questions from "./lib/screens/Questions.svelte";
+  import Collections from "./lib/screens/Collections.svelte";
   import NewPost from "./lib/NewPost.svelte";
   import Nav from "./lib/Nav.svelte";
 

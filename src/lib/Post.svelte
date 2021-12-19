@@ -14,6 +14,7 @@
 </script>
 
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import { onMount } from "svelte";
 
   export let content: Content;
@@ -25,6 +26,7 @@
     vote = i;
     totalAnswers += 1;
     // content.answers[i].result += 1;
+    answered();
   }
 
   let totalAnswers = 0;
@@ -34,10 +36,16 @@
       totalAnswers += answer.result;
     });
   });
+
+  // Evetns
+  const dispatch = createEventDispatcher();
+  function answered() {
+    dispatch("answered", {});
+  }
 </script>
 
 <article class="card" class:is-revealed={vote >= 0}>
-  <h3>{content.question}</h3>
+  <h4>{content.question}</h4>
 
   {#each content.answers as answer, i}
     <button
@@ -68,7 +76,7 @@
   article {
     transition: $trans;
 
-    h3 {
+    h4 {
       font-size: 1.2rem;
     }
 

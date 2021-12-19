@@ -3,9 +3,9 @@
   import IconEdit from "svelte-material-icons/Pencil.svelte";
   import IconDown from "svelte-material-icons/ChevronDown.svelte";
 
-  import Header from "./Header.svelte";
-  import BarChart from "./charts/BarChart.svelte";
-  import PieChart from "./charts/PieChart.svelte";
+  import Header from "../Header.svelte";
+  import BarChart from "../charts/BarChart.svelte";
+  import PieChart from "../charts/PieChart.svelte";
 </script>
 
 <section>
@@ -69,8 +69,8 @@
 
 <style lang="scss">
   @use "sass:color";
-  @import "../resources/scss/colors.scss";
-  @import "../resources/scss/transitions.scss";
+  @import "../../resources/scss/colors.scss";
+  @import "../../resources/scss/transitions.scss";
 
   section {
     height: auto;
@@ -93,7 +93,7 @@
     transition: $btn-out;
 
     h3 {
-      color: mix($accent, black, 40%);
+      color:mix($accent, black, 40%);
     }
 
     &:hover {

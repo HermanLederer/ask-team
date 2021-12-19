@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import Anonymity from "./Anonymity.svelte";
+  import Anonymity from "../Anonymity.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -39,7 +39,7 @@
 </section>
 
 <style lang="scss">
-  @import "../resources/scss/colors.scss";
+  @import "../../resources/scss/colors.scss";
 
   section {
     height: 100vh;
