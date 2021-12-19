@@ -19,7 +19,7 @@
       <IconDown size="2rem" />
     </nav>
 
-    <div class="questions">
+    <div class="card questions">
       <h4>Questions:</h4>
       <ul>
         <li>Question about the proejct idea</li>
@@ -32,26 +32,33 @@
     </div>
 
     <div class="card graph">
-      <h4>Happiness this week</h4>
+      <h4>Satisfaction this week</h4>
+      <p>Happiness and productiveness</p>
       <BarChart />
       <div class="formula">
         <p>Formula:</p>
         <input
           type="text"
-          value="AVG(Happy, Production FROM #mood THIS week)"
+          value="AVG(Happy, Productive FROM #mood THIS week)"
+          name="bar-formula"
         />
-        <!-- <button><IconEdit size="1rem" /></button> -->
+        <label for="bar-formula"><IconEdit size="1rem" /></label>
       </div>
     </div>
 
     <div class="card graph">
       <h4>Mood</h4>
+      <p>All mood votes past 3 months</p>
       <PieChart />
       <div class="formula-wrapper">
         <div class="formula">
           <p>Formula:</p>
-          <input type="text" value="CUML(#mood PAST 3 monts)" />
-          <!-- <button><IconEdit size="1rem" /></button> -->
+          <input
+            type="text"
+            value="CUML(#mood PAST 3 monts)"
+            name="pie-formula"
+          />
+          <label for="pie-formula"><IconEdit size="1rem" /></label>
         </div>
       </div>
     </div>
@@ -103,8 +110,6 @@
   }
 
   .questions {
-    padding: 1rem;
-
     ul {
       list-style: none;
     }
@@ -115,7 +120,7 @@
     }
 
     li {
-      opacity: 0.8;
+      opacity: 0.6;
 
       &:not(:last-child) {
         margin-bottom: 0.5rem;
@@ -137,34 +142,70 @@
   }
 
   .graph {
+    padding-bottom: calc(1rem - 1px);
+
+    // background: mix(mix($accent, black, 40%), transparent, 5%);
+    // border-color: transparent;
+
     display: flex;
     flex-direction: column;
     flex-grow: 0;
 
     h4 {
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
+      color: mix($accent, black, 20%);
       font-size: 1.2rem;
     }
 
+    p {
+      margin-bottom: 2rem;
+      color: mix($accent, black, 20%);
+      opacity: 0.6;
+    }
+
     .formula {
+      position: relative;
       margin-top: 2rem;
+
+      color: mix(mix($accent, black, 40%), transparent, 40%);
+
+      transition: $btn-out;
 
       p {
         margin-bottom: 0.5rem;
       }
 
       input {
-        background: mix($accent, transparent, 10%);
-        color: mix($accent, black, 20%);
+        width: calc(100% + 2rem);
+        margin: 0 -1rem;
+        padding-right: 3rem;
+
+        background: mix($accent, white, 10%);
+        color: inherit;
         border-color: transparent;
       }
 
-      button {
+      label {
         width: 3rem;
-        background: mix($accent, transparent, 10%);
-        color: mix($accent, black, 20%);
+        height: 3rem;
 
-        border: none;
+        position: absolute;
+        right: -1rem;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      &:hover {
+        color: mix(mix($accent, black, 60%), transparent, 80%);
+        transition: $btn-in;
+      }
+
+      &:focus-within {
+        color: mix($accent, black, 20%);
       }
     }
   }

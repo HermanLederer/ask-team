@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <div class="pie-chart">
   <div class="pie" />
   <ul>
@@ -27,7 +24,7 @@
       width: 100%;
       aspect-ratio: 1/1;
       position: relative;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
 
       border-radius: 50%;
       background: conic-gradient($color1 120deg, $color2 0 240deg, $color3 0 290deg, $color4 0 320deg, $color5 0);
@@ -52,11 +49,16 @@
 
     ul {
       list-style: none;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-auto-flow: column;
     }
 
     li {
       line-height: 1rem;
       margin-bottom: 0.5rem;
+
+      opacity: 0.8;
 
       display: flex;
       align-items: center;
