@@ -36,7 +36,7 @@
   });
 </script>
 
-<article class:is-revealed={vote >= 0}>
+<article class="card" class:is-revealed={vote >= 0}>
   <h3>{content.question}</h3>
 
   {#each content.answers as answer, i}
@@ -62,22 +62,21 @@
 
 <style lang="scss">
   @use "sass:color";
-  @import "../resources//scss/colors.scss";
-  @import "../resources//scss/transitions.scss";
+  @import "../resources/scss/colors.scss";
+  @import "../resources/scss/transitions.scss";
 
   article {
-    padding: 1rem;
-    border: 1px rgba(0, 0, 0, 0.1) solid;
-    border-radius: 0.5rem;
     transition: $trans;
 
     h3 {
-      margin: 0.5rem 1rem 1rem;
+      font-size: 1.2rem;
     }
 
     button {
+      width: calc(100% + 2rem);
       position: relative;
-      margin-bottom: 0.25rem;
+      margin: 0 -1rem;
+      margin-bottom: 0.5rem;
 
       background: none;
       color: rgba(0, 0, 0, 0.8);
@@ -121,7 +120,6 @@
     .total {
       height: 2rem;
       position: relative;
-      left: 1rem;
       margin-top: 0.5rem;
 
       opacity: 0.4;

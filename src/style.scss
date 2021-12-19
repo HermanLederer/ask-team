@@ -28,35 +28,48 @@ button {
   cursor: pointer;
 }
 
+input,
+button {
+  width: 100%;
+  height: 3rem;
+  padding: 0 calc(1rem - 1px);
+
+  border: 1px rgba(0, 0, 0, 0.4) solid;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+// Generic elements
+
 .container {
   max-width: 40rem;
   margin: 0 auto;
 }
 
-input,
-button {
-  width: 100%;
-  height: 3rem;
-  padding: 0 1rem;
-
-  border: 1px rgba(0, 0, 0, 0.4) solid;
+.card {
+  padding: calc(2rem - 1px);
+  border: 1px rgba(0, 0, 0, 0.1) solid;
   border-radius: 0.5rem;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
 }
 
+// Scroll bar
+
 @media (pointer: fine) {
-  /* width */
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-  /* Handle */
+
   ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 
     &:hover {
       background: rgba(0, 0, 0, 0.2);

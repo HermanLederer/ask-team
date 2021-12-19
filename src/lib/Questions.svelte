@@ -1,4 +1,6 @@
 <script lang="ts">
+  import IconQuestions from "svelte-material-icons/Forum.svelte";
+
   import Anonymity from "./Anonymity.svelte";
   import Post from "./Post.svelte";
   import Header from "./Header.svelte";
@@ -35,7 +37,9 @@
 </script>
 
 <section>
-  <Header />
+  <Header title="Questions">
+    <IconQuestions size="4rem" />
+  </Header>
 
   <div class="container">
     <Anonymity />
@@ -57,7 +61,7 @@
   }
 
   .container {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
 
     display: grid;
     grid-template-columns: 1fr;

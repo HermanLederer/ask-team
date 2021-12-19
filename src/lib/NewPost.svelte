@@ -19,7 +19,7 @@
   let options = ["", ""];
 
   function updateDelays() {
-    let formT = 300;
+    let formT = 150;
     const children = document.getElementById("new-post-form").children;
     for (let i = 0; i < children.length; ++i) {
       (children[i] as HTMLElement).style.animationDelay = `${formT}ms`;
@@ -131,7 +131,6 @@
     border: none;
     border-radius: 50%;
 
-    font-size: 1rem;
     font-weight: 600;
   }
 
@@ -163,7 +162,6 @@
     .label {
       width: 0;
 
-      font-size: 1rem;
       font-weight: 600;
 
       overflow: hidden;

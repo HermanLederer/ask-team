@@ -13,7 +13,7 @@
   <div class="container">
     <h2>Welcome to AskTeam.</h2>
     <p>
-      Please log in to continue with your Team Ask account or visit as a guest.
+      Please log in to continue with your AskTeam account or visit as a guest.
     </p>
     <form
       on:submit|preventDefault={() => {
@@ -81,7 +81,6 @@
         background: rgba(255, 255, 255, 0.2);
         color: white;
         font-weight: 600;
-        font-size: 1rem;;
         border: none;
       }
     }

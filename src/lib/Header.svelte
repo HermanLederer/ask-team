@@ -1,11 +1,11 @@
 <script lang="ts">
-  import IconQuestions from "svelte-material-icons/Forum.svelte";
+  export let title;
 </script>
 
 <header>
   <div class="center">
-    <IconQuestions size="4rem" />
-    <h2>Questions</h2>
+    <slot></slot>
+    <h2>{title}</h2>
   </div>
 </header>
 
