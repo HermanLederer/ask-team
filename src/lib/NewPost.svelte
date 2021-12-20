@@ -17,12 +17,31 @@
 
   // Post
   let post: Content;
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   function resetPost() {
+    const date = new Date();
+
     post = {
+      postedOn: `${months[date.getMonth()]} ${String(
+        date.getDate()
+      ).padStart(2, "0")}`,
       question: "",
       answers: [
         { name: "Option 1", result: 0 },
-        { name: "Option 2", result: 0 }
+        { name: "Option 2", result: 0 },
       ],
     };
   }

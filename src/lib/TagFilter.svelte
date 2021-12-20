@@ -7,7 +7,7 @@
 <nav>
   <div class="container">
     <div class="card">
-      <h3>Tags</h3>
+      <h3>Channels</h3>
       <ul>
         {#each tags as tag, i}
           <li class:is-selected={selected.includes(i)}>

@@ -33,17 +33,37 @@
   let answered = 0;
 
   let posts: Content[] = [
-    { id: ++nextId, question: "What?", answers: randomAnswers() },
-    { id: ++nextId, question: "What2?", answers: randomAnswers() },
-    { id: ++nextId, question: "What3?", answers: randomAnswers() },
-    { id: ++nextId, question: "What4?", answers: randomAnswers() },
+    {
+      id: ++nextId,
+      postedOn: "Dec 10",
+      question: "What?",
+      answers: randomAnswers(),
+    },
+    {
+      id: ++nextId,
+      postedOn: "Dec 10",
+      question: "What2?",
+      answers: randomAnswers(),
+    },
+    {
+      id: ++nextId,
+      postedOn: "Dec 10",
+      question: "What3?",
+      answers: randomAnswers(),
+    },
+    {
+      id: ++nextId,
+      postedOn: "Dec 10",
+      question: "What4?",
+      answers: randomAnswers(),
+    },
   ];
 
   window.questions = {
     post(content: Content) {
       content.id = ++nextId;
       posts = [content, ...posts];
-      element.scrollTo(0, window.innerHeight / 2)
+      element.scrollTo(0, window.innerHeight / 2);
     },
   };
 </script>
@@ -87,7 +107,7 @@
     <h3>Questions</h3>
 
     {#each posts as post (post.id)}
-      <div animate:flip={{duration: 300, delay: 150}} in:fade>
+      <div animate:flip={{ duration: 300, delay: 150 }} in:fade>
         <Post
           content={post}
           on:answered={() => {
@@ -100,13 +120,13 @@
     <button
       id="more-questions"
       on:click={() => {
-        posts = [
-          ...posts,
-          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-        ];
+        // posts = [
+        //   ...posts,
+        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+        // ];
       }}>More</button
     >
   </div>

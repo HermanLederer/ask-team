@@ -6,7 +6,7 @@
 
   type Content = {
     id?: number;
-    postedOn?: string;
+    postedOn: string;
     question: string;
     answers: Answer[];
     vote?: number;
@@ -46,6 +46,8 @@
 </script>
 
 <article class="card" class:is-revealed={content.vote >= 0}>
+  <time>Posted on {content.postedOn}</time>
+
   <h4>{content.question}</h4>
 
   {#each content.answers as answer, i}
@@ -77,6 +79,13 @@
   article {
     background: white;
     transition: $trans;
+
+    time {
+      font-size: 0.8rem;
+      opacity: 0.4;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
 
     h4 {
       font-size: 1.2rem;
