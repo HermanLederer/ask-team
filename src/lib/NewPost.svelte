@@ -139,7 +139,7 @@
 
     form {
       height: 100%;
-      padding: 0 3rem;
+      padding: 0 2rem;
       opacity: 0;
       transition: $trans;
 
