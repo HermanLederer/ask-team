@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Content } from "./Post.svelte";
-
-  import { onMount } from "svelte";
+  import Channels from "./Channels.svelte";
 
   // Visibility
   let showFab = false;
@@ -35,10 +34,12 @@
     const date = new Date();
 
     post = {
-      postedOn: `${months[date.getMonth()]} ${String(
-        date.getDate()
-      ).padStart(2, "0")}`,
+      postedOn: `${months[date.getMonth()]} ${String(date.getDate()).padStart(
+        2,
+        "0"
+      )}`,
       question: "",
+      tags: ["Noodle lab", "Project #3"],
       answers: [
         { name: "Option 1", result: 0 },
         { name: "Option 2", result: 0 },
@@ -58,36 +59,34 @@
       formT += 50;
     }
   }
-
-  onMount(updateDelays);
 </script>
 
 <section class:is-open={isOpen} class:is-hidden={!showFab}>
-  <div class="container">
-    <form id="new-post-form">
-      <h2>New poll</h2>
+  <form id="new-post-form" class="container">
+    <h2>New poll</h2>
 
-      <label for="question">What is the question?</label>
-      <input type="text" name="question" bind:value={post.question} />
+    <label for="question">What is the question?</label>
+    <input type="text" name="question" bind:value={post.question} />
 
-      <span class="options-label">Anwer options</span>
+    <span class="what-tags">Where do you want to post this question?</span>
+    <div><Channels bind:selected={post.tags} /></div>
 
-      {#each post.answers as answer, i}
-        <input type="text" name={`option${i}`} bind:value={answer.name} />
-      {/each}
+    <span class="options-label">Anwer options</span>
+    {#each post.answers as answer, i}
+      <input type="text" name={`option${i}`} bind:value={answer.name} />
+    {/each}
 
-      <input
-        type="button"
-        value="+"
-        class="add-option"
-        on:click={() => {
-          post.answers = [...post.answers, { name: "", result: 0 }];
-        }}
-      />
+    <input
+      type="button"
+      value="+"
+      class="add-option"
+      on:click={() => {
+        post.answers = [...post.answers, { name: "", result: 0 }];
+      }}
+    />
 
-      <span class="answers-warning">People can also give open answers</span>
-    </form>
-  </div>
+    <span class="answers-warning">People can also give open answers</span>
+  </form>
 
   <button
     class="fab"
@@ -133,21 +132,25 @@
     transition: $trans;
     overflow: hidden;
 
+    h2 {
+      margin: 2rem 0;
+    }
+
+    .container {
+      padding: 0 3rem;
+    }
+
     form {
       height: 100%;
-      padding: 2rem;
-      padding-top: 2rem;
-
       opacity: 0;
-
       transition: $trans;
-
-      h2 {
-        margin-bottom: 2rem;
-      }
 
       .options-label {
         margin-top: 2rem;
+      }
+
+      input[type="text"] {
+        color: rgba(0, 0, 0, 0.6);
       }
 
       & > * {
@@ -211,10 +214,10 @@
   }
 
   .answers-warning {
-    margin-bottom: 0;
-
+    margin-top: 1rem;
     color: rgba(0, 0, 0, 0.4);
     text-align: center;
+    display: block;
   }
 
   @keyframes openFormElement {

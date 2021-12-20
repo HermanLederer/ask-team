@@ -32,28 +32,34 @@
   let nextId = -1;
   let answered = 0;
 
+  const tags = ["Noodle lab", "Project #3"]
+
   let posts: Content[] = [
     {
       id: ++nextId,
       postedOn: "Dec 10",
+      tags,
       question: "What?",
       answers: randomAnswers(),
     },
     {
       id: ++nextId,
       postedOn: "Dec 10",
+      tags,
       question: "What2?",
       answers: randomAnswers(),
     },
     {
       id: ++nextId,
       postedOn: "Dec 10",
+      tags,
       question: "What3?",
       answers: randomAnswers(),
     },
     {
       id: ++nextId,
       postedOn: "Dec 10",
+      tags,
       question: "What4?",
       answers: randomAnswers(),
     },
@@ -185,19 +191,22 @@
         background: $accent;
         border-radius: 0.5rem;
 
-        transition: 500ms ease-in-out;
+        transition: $trans;
 
         .indicator {
-          width: 2rem;
+          width: 3rem;
+          height: 2rem;
           position: absolute;
-          right: -1rem;
-          top: -1.5rem;
+          right: -1.25rem;
+          top: -2rem;
 
           color: $accent;
           font-weight: 600;
           font-size: 0.8rem;
 
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           &::after {
             content: "";
@@ -205,8 +214,8 @@
             width: 0.5rem;
             height: 0.5rem;
             position: absolute;
-            bottom: -1.275rem;
-            left: 0.25rem;
+            bottom: -0.75rem;
+            left: 1rem;
 
             background: white;
             border-radius: 50%;

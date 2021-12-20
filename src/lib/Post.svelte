@@ -7,6 +7,7 @@
   type Content = {
     id?: number;
     postedOn: string;
+    tags?: string[];
     question: string;
     answers: Answer[];
     vote?: number;
@@ -46,8 +47,6 @@
 </script>
 
 <article class="card" class:is-revealed={content.vote >= 0}>
-  <time>Posted on {content.postedOn}</time>
-
   <h4>{content.question}</h4>
 
   {#each content.answers as answer, i}
@@ -68,6 +67,18 @@
     </button>
   {/each}
 
+  <time>Posted on {content.postedOn}</time>
+
+  {#if content.tags}
+    <div class="tags">
+      <span> on channels:</span>
+      {#each content.tags as tag}
+        <span class="tag">{tag}</span>
+      {/each}
+    </div>
+  {/if}
+
+
   <p class="total">{totalAnswers} votes</p>
 </article>
 
@@ -81,13 +92,30 @@
     transition: $trans;
 
     time {
+      margin-top: 1rem;
       font-size: 0.8rem;
       opacity: 0.4;
-      margin-bottom: 0.5rem;
       display: block;
     }
 
+    .tags {
+      span {
+        font-size: 0.8rem;
+        opacity: 0.4;
+      }
+
+      .tag {
+        opacity: 0.8;
+        color: mix($accent, black, 80%);
+
+        &:not(:last-child)::after {
+          content: ", ";
+        }
+      }
+    }
+
     h4 {
+      margin-top: 0.5rem;
       font-size: 1.2rem;
     }
 
