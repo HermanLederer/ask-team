@@ -32,7 +32,7 @@
   let nextId = -1;
   let answered = 0;
 
-  const tags = ["Noodle lab", "Project #3"]
+  const tags = ["Noodle lab", "Project #3"];
 
   let posts: Content[] = [
     {
@@ -69,7 +69,8 @@
     post(content: Content) {
       content.id = ++nextId;
       posts = [content, ...posts];
-      element.scrollTo(0, window.innerHeight / 2);
+      console.log(document.getElementById("title-questions").offsetTop);
+      element.scrollTo(0, document.getElementById("title-questions").offsetTop);
     },
   };
 </script>
@@ -110,7 +111,7 @@
       {/if}
     </div>
 
-    <h3>Questions</h3>
+    <h3 id="title-questions">Questions</h3>
 
     {#each posts as post (post.id)}
       <div animate:flip={{ duration: 300, delay: 150 }} in:fade>
