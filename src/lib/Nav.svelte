@@ -16,7 +16,7 @@
   };
 
   // Menu
-  let nav = ["Questions", "collections"];
+  let nav = ["Questions", "Statistics"];
   let selected = nav[0];
 
   const dispatch = createEventDispatcher();

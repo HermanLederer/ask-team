@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
+  import { flip } from "svelte/animate";
+
   import IconQuestions from "svelte-material-icons/Forum.svelte";
 
   import TagFilter from "../TagFilter.svelte";
@@ -22,17 +25,30 @@
     return res;
   }
 
+  let element: HTMLElement;
+
+  // Posts
+
+  let nextId = -1;
+  let answered = 0;
+
   let posts: Content[] = [
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
-    { question: "What?", answers: randomAnswers() },
+    { id: ++nextId, question: "What?", answers: randomAnswers() },
+    { id: ++nextId, question: "What2?", answers: randomAnswers() },
+    { id: ++nextId, question: "What3?", answers: randomAnswers() },
+    { id: ++nextId, question: "What4?", answers: randomAnswers() },
   ];
 
-  let answered = 0;
+  window.questions = {
+    post(content: Content) {
+      content.id = ++nextId;
+      posts = [content, ...posts];
+      element.scrollTo(0, window.innerHeight / 2)
+    },
+  };
 </script>
 
-<section>
+<section bind:this={element}>
   <Header title="Questions">
     <IconQuestions size="4rem" />
   </Header>
@@ -44,8 +60,11 @@
       <h3>Progress</h3>
       <p>Questions answered today: {answered}/4</p>
       <div class="bar">
-        <div class="fill" style={`width: max(${Math.min(1, answered / 4) * 100}%, 1rem);`}>
-          <p class="indicator">{answered / 4 * 100}%</p>
+        <div
+          class="fill"
+          style={`width: max(${Math.min(1, answered / 4) * 100}%, 1rem);`}
+        >
+          <p class="indicator">{(answered / 4) * 100}%</p>
         </div>
       </div>
       {#if answered > 4}
@@ -67,14 +86,15 @@
 
     <h3>Questions</h3>
 
-    {#each posts as post}
-      <Post
-        content={post}
-        vote={-1}
-        on:answered={() => {
-          answered += 1;
-        }}
-      />
+    {#each posts as post (post.id)}
+      <div animate:flip={{duration: 300, delay: 150}} in:fade>
+        <Post
+          content={post}
+          on:answered={() => {
+            answered += 1;
+          }}
+        />
+      </div>
     {/each}
 
     <button
@@ -82,10 +102,10 @@
       on:click={() => {
         posts = [
           ...posts,
-          { question: "Bonus question?", answers: randomAnswers() },
-          { question: "Bonus question?", answers: randomAnswers() },
-          { question: "Bonus question?", answers: randomAnswers() },
-          { question: "Bonus question?", answers: randomAnswers() },
+          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
+          { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
         ];
       }}>More</button
     >
@@ -159,8 +179,8 @@
 
           text-align: center;
 
-          &::after{
-            content: '';
+          &::after {
+            content: "";
 
             width: 0.5rem;
             height: 0.5rem;

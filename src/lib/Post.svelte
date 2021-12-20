@@ -5,9 +5,12 @@
   };
 
   type Content = {
+    id?: number;
     postedOn?: string;
     question: string;
     answers: Answer[];
+    vote?: number;
+    fresh?: boolean;
   };
 
   export type { Content };
@@ -15,27 +18,25 @@
 
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { onMount } from "svelte";
 
   export let content: Content;
-  export let vote: number;
-
   function submit(i: number) {
-    if (vote >= 0) return;
+    if (content.vote != undefined) return;
 
-    vote = i;
-    totalAnswers += 1;
-    // content.answers[i].result += 1;
+    content.vote = i;
+    content.answers[i].result += 1;
     answered();
   }
 
-  let totalAnswers = 0;
+  // Total answers
 
-  onMount(() => {
+  $: totalAnswers = (() => {
+    let res = 0;
     content.answers.forEach((answer) => {
-      totalAnswers += answer.result;
+      res += answer.result;
     });
-  });
+    return res;
+  })();
 
   // Evetns
   const dispatch = createEventDispatcher();
@@ -44,7 +45,7 @@
   }
 </script>
 
-<article class="card" class:is-revealed={vote >= 0}>
+<article class="card" class:is-revealed={content.vote >= 0}>
   <h4>{content.question}</h4>
 
   {#each content.answers as answer, i}
@@ -52,7 +53,7 @@
       on:click={() => {
         submit(i);
       }}
-      class:is-selected={i === vote}
+      class:is-selected={i === content.vote}
     >
       <div
         class="bar"
@@ -74,6 +75,7 @@
   @import "../resources/scss/transitions.scss";
 
   article {
+    background: white;
     transition: $trans;
 
     h4 {

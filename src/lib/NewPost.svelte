@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { Content } from "./Post.svelte";
+
   import { onMount } from "svelte";
 
   // Visibility
@@ -13,10 +15,21 @@
     },
   };
 
+  // Post
+  let post: Content;
+  function resetPost() {
+    post = {
+      question: "",
+      answers: [
+        { name: "Option 1", result: 0 },
+        { name: "Option 2", result: 0 }
+      ],
+    };
+  }
+  resetPost();
+
   // New Post action
   let isOpen = false;
-
-  let options = ["", ""];
 
   function updateDelays() {
     let formT = 150;
@@ -25,10 +38,6 @@
       (children[i] as HTMLElement).style.animationDelay = `${formT}ms`;
       formT += 50;
     }
-  }
-
-  function addOption() {
-    options = [...options, ""];
   }
 
   onMount(updateDelays);
@@ -40,15 +49,22 @@
       <h2>New poll</h2>
 
       <label for="question">What is the question?</label>
-      <input type="text" name="question" />
+      <input type="text" name="question" bind:value={post.question} />
 
       <span class="options-label">Anwer options</span>
 
-      {#each options as option, i}
-        <input type="text" name={`option${i}`} bind:value={option} />
+      {#each post.answers as answer, i}
+        <input type="text" name={`option${i}`} bind:value={answer.name} />
       {/each}
 
-      <input type="button" value="+" class="add-option" on:click={addOption} />
+      <input
+        type="button"
+        value="+"
+        class="add-option"
+        on:click={() => {
+          post.answers = [...post.answers, { name: "", result: 0 }];
+        }}
+      />
 
       <span class="answers-warning">People can also give open answers</span>
     </form>
@@ -57,11 +73,17 @@
   <button
     class="fab"
     on:click={() => {
-      updateDelays();
+      // Toggle openness
       isOpen = !isOpen;
-      document.body.style.overflow = isOpen ? "hidden" : "auto";
+
+      updateDelays();
+
       if (isOpen) {
-        options = ["", ""];
+        // Just opened
+        resetPost();
+      } else {
+        // Just closed (we assume that they posted)
+        window.questions.post(post);
       }
     }}
   >

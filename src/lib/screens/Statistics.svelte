@@ -9,7 +9,7 @@
 </script>
 
 <section>
-  <Header title="Collections">
+  <Header title="Statistics">
     <IconCollections size="4rem" />
   </Header>
 
