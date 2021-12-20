@@ -50,11 +50,7 @@
   .container {
     position: relative;
     height: 100%;
-    padding: 2rem 1rem;
-
-    & > * {
-      margin: 0 1rem;
-    }
+    padding: 2rem;
 
     h2 {
       margin-bottom: 1rem;
@@ -66,17 +62,9 @@
     }
 
     form {
-      margin: 0;
-
-      & > * {
-        margin: 0 1rem;
-      }
-
       input[type="email"],
       input[type="password"] {
         height: 4rem;
-        margin-left: 0;
-        margin-right: 0;
 
         background: rgba(255, 255, 255, 0.2);
         color: white;
@@ -100,11 +88,11 @@
   }
 
   .iforgor {
+    text-align: center;
     display: block;
   }
 
   input[type="submit"] {
-    width: calc(100% - 2rem);
     height: 3rem;
 
     background: white;
