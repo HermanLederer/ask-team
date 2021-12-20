@@ -38,7 +38,7 @@
         2,
         "0"
       )}`,
-      question: "",
+      question: "Question",
       tags: ["Noodle lab", "Project #3"],
       answers: [
         { name: "Option 1", result: 0 },
@@ -68,12 +68,17 @@
     <label for="question">What is the question?</label>
     <input type="text" name="question" bind:value={post.question} />
 
-    <span class="what-tags">Where do you want to post this question?</span>
-    <div><Channels bind:selected={post.tags} /></div>
+    <span class="label what-tags">Where do you want to post this question?</span>
+    <div class="channels"><Channels bind:selected={post.tags} /></div>
 
-    <span class="options-label">Anwer options</span>
+    <span class="options-label label">Anwer options</span>
     {#each post.answers as answer, i}
-      <input type="text" name={`option${i}`} bind:value={answer.name} />
+      <input
+        type="text"
+        name={`option${i}`}
+        class="option"
+        bind:value={answer.name}
+      />
     {/each}
 
     <input
@@ -132,26 +137,11 @@
     transition: $trans;
     overflow: hidden;
 
-    h2 {
-      margin: 2rem 0;
-    }
-
-    .container {
-      padding: 0 3rem;
-    }
-
     form {
       height: 100%;
+      padding: 0 3rem;
       opacity: 0;
       transition: $trans;
-
-      .options-label {
-        margin-top: 2rem;
-      }
-
-      input[type="text"] {
-        color: rgba(0, 0, 0, 0.6);
-      }
 
       & > * {
         margin-bottom: 1rem;
@@ -162,21 +152,32 @@
         transform: translateY(-1rem);
         transition: $trans;
       }
+
+      h2,
+      label,
+      .label {
+        margin-top: 2rem;
+        display: block;
+      }
+
+      input[type="text"] {
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      .add-option {
+        width: 2rem;
+        height: 2rem;
+        margin: 1rem auto;
+        padding: 0;
+
+        background: $accent;
+        color: white;
+        border: none;
+        border-radius: 50%;
+
+        font-weight: 600;
+      }
     }
-  }
-
-  .add-option {
-    width: 2rem;
-    height: 2rem;
-    margin: 1rem auto;
-    padding: 0;
-
-    background: $accent;
-    color: white;
-    border: none;
-    border-radius: 50%;
-
-    font-weight: 600;
   }
 
   .fab {
