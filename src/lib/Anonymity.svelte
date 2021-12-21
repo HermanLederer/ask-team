@@ -4,7 +4,7 @@
 
 <aside id="anonymity">
   <IconIncognito size="2rem" />
-  <p>All your answers are alwaws anoymous!</p>
+  <p>All your answers are always anonymous!</p>
 </aside>
 
 <style>

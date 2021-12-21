@@ -22,10 +22,10 @@
     <div class="card questions">
       <h4>Questions:</h4>
       <ul>
-        <li>Question about the proejct idea</li>
+        <li>Question about the project idea</li>
         <li>Question about research</li>
         <li>Another question about research</li>
-        <li>Whis solution is better</li>
+        <li>Which solution is better</li>
         <li>Have you already used My Project #3</li>
       </ul>
       <button> Select questions </button>

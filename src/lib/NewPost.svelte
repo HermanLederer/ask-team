@@ -71,7 +71,7 @@
     <span class="label what-tags">Where do you want to post this question?</span>
     <div class="channels"><Channels bind:selected={post.tags} /></div>
 
-    <span class="options-label label">Anwer options</span>
+    <span class="options-label label">Answer options</span>
     {#each post.answers as answer, i}
       <input
         type="text"
@@ -267,4 +267,5 @@
   section.is-hidden {
     transform: scale(0);
   }
+  // will Star see this comment?
 </style>
