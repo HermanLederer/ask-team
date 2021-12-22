@@ -9,70 +9,34 @@
   import Header from "../Header.svelte";
 
   import type { Content } from "../Post.svelte";
-
-  function randomAnswers() {
-    const res = [];
-
-    const amount = 2 + Math.random() * 3;
-
-    for (let i = 0; i < amount; i++) {
-      res.push({
-        name: `Option ${i + 1}`,
-        result: 1 + Math.round(Math.random() * 19),
-      });
-    }
-
-    return res;
-  }
+  import { loadPosts } from "../backend";
 
   let element: HTMLElement;
 
   // Posts
 
-  let nextId = -1;
   let answered = 0;
-
-  const tags = ["Noodle lab", "Project #3"];
-
-  let posts: Content[] = [
-    {
-      id: ++nextId,
-      postedOn: "Dec 10",
-      tags,
-      question: "What?",
-      answers: randomAnswers(),
-    },
-    {
-      id: ++nextId,
-      postedOn: "Dec 10",
-      tags,
-      question: "What2?",
-      answers: randomAnswers(),
-    },
-    {
-      id: ++nextId,
-      postedOn: "Dec 10",
-      tags,
-      question: "What3?",
-      answers: randomAnswers(),
-    },
-    {
-      id: ++nextId,
-      postedOn: "Dec 10",
-      tags,
-      question: "What4?",
-      answers: randomAnswers(),
-    },
-  ];
+  let posts: Content[] = [];
 
   window.questions = {
     post(content: Content) {
-      content.id = ++nextId;
       posts = [content, ...posts];
-      console.log(document.getElementById("title-questions").offsetTop);
       element.scrollTo(0, document.getElementById("title-questions").offsetTop);
     },
+    addPost(content: Content) {
+      posts = [...posts, content];
+    },
   };
+
+  let page = -1;
+  function load4Posts() {
+    loadPosts(++page).forEach((post) => {
+      window.questions.addPost(post);
+    });
+    console.log(posts)
+  }
+
+  load4Posts();
 </script>
 
 <section bind:this={element}>
@@ -124,18 +88,7 @@
       </div>
     {/each}
 
-    <button
-      id="more-questions"
-      on:click={() => {
-        // posts = [
-        //   ...posts,
-        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-        //   { id: ++nextId, question: "Bonus question?", answers: randomAnswers() },
-        // ];
-      }}>More</button
-    >
+    <button id="more-questions" on:click={load4Posts}>More</button>
   </div>
 </section>
 

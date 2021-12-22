@@ -90,7 +90,7 @@
     }}
     class:is-selected={content.vote === content.answers.length}
   >
-    <input type="text" placeholder="Other" bind:value={otherAnswer} />
+    <input type="text" placeholder="Custom answer" bind:value={otherAnswer} />
     <input type="submit" value="Custom answer" />
   </form>
 
@@ -141,8 +141,12 @@
     }
 
     h4 {
+      // color: $accent;
+
       margin-top: 0.5rem;
       font-size: 1.2rem;
+
+      word-break: break-all;
     }
 
     .other-submitted {
@@ -265,6 +269,10 @@
 
     &.is-revealed {
       border-color: adjust-color($color: $accent, $alpha: -0.4);
+
+      h4 {
+        color: $accent;
+      }
 
       .other {
         height: 0;
