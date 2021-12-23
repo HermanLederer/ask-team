@@ -25,7 +25,7 @@
       setTimeout(() => {
         content.id = ++nextID;
         posts = [content, ...posts];
-      }, 1500);
+      }, 150);
     },
     addPost(content: Content) {
       posts = [...posts, content];
