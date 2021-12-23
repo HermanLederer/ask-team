@@ -83,11 +83,6 @@
     grid-gap: 1rem;
   }
 
-  h3 {
-    padding: 1rem 2rem 0rem;
-    color: mix($accent, black, 40%);
-  }
-
   #more-questions {
     width: max-content;
     margin: 0 auto;
