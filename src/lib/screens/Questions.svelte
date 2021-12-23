@@ -2,8 +2,6 @@
   import { fade } from "svelte/transition";
   import { flip } from "svelte/animate";
 
-  import IconQuestions from "svelte-material-icons/Forum.svelte";
-
   import TagFilter from "../TagFilter.svelte";
   import Post from "../Post.svelte";
   import Header from "../Header.svelte";
@@ -37,23 +35,18 @@
       post.id = ++nextID;
       window.questions.addPost(post);
     });
-    console.log(posts);
   }
 
   load4Posts();
 </script>
 
 <section bind:this={element}>
-  <Header title="Questions">
-    <IconQuestions size="4rem" />
-  </Header>
+  <Header title="Questions"/>
 
   <TagFilter />
 
   <div class="container">
     <!-- <Progress t={answered} max={4} /> -->
-
-    <h3 id="title-questions">Questions</h3>
 
     {#each posts as post (post.id)}
       <div animate:flip={{ duration: 300, delay: 150 }} in:fade>

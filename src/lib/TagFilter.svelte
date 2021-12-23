@@ -4,7 +4,7 @@
 
 <nav>
   <div class="container">
-    <div class="card">
+    <div class="card is-solid">
       <h3>Channels</h3>
       <Channels selected={["Mood", "Noodle lab"]} />
     </div>
@@ -18,11 +18,6 @@
   nav {
     .container {
       padding: 0 1rem;
-    }
-
-    .card {
-      background: mix($accent, transparent, 5%);
-      border-color: transparent;
     }
 
     h3 {

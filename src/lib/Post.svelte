@@ -143,8 +143,6 @@
     }
 
     h4 {
-      // color: $accent;
-
       margin-top: 0.5rem;
       font-size: 1.2rem;
 

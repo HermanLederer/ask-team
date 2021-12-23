@@ -64,6 +64,7 @@
     h2 {
       width: 100%;
       margin-bottom: 1rem;
+      color: white;
       font-size: 2rem;
     }
 

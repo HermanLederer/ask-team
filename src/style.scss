@@ -1,3 +1,5 @@
+@import "./resources/scss/colors.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -16,20 +18,32 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "Bree Serif", serif;
 }
 
-a {
-  color: inherit;
+h2 {
+  color: mix($accent, #000, 20%);
+  font-size: 2rem;
+}
+
+h3 {
+  color: mix($accent, black, 40%);
+  font-size: 1.5rem;
+}
+
+h4 {
+  color: mix($accent, #000, 60%);
+  font-weight: 400;
 }
 
 p {
   font-size: 1rem;
 }
 
-h3 {
-  font-size: 1.4rem;
+a {
+  color: inherit;
 }
 
 input[type="button"],
@@ -66,6 +80,12 @@ button {
 
   h4 {
     margin-bottom: 1rem;
+  }
+
+  &.is-solid {
+    background: mix($accent, transparent, 5%);
+    color: mix($accent, black, 40%);
+    border-color: transparent;
   }
 }
 

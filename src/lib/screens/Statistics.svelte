@@ -1,5 +1,4 @@
 <script lang="ts">
-  import IconCollections from "svelte-material-icons/ChartArc.svelte";
   import IconEdit from "svelte-material-icons/Pencil.svelte";
   import IconDown from "svelte-material-icons/ChevronDown.svelte";
 
@@ -9,9 +8,7 @@
 </script>
 
 <section>
-  <Header title="Statistics">
-    <IconCollections size="4rem" />
-  </Header>
+  <Header title="Statistics" />
 
   <div class="container">
     <nav>
@@ -19,7 +16,7 @@
       <IconDown size="2rem" />
     </nav>
 
-    <div class="card questions">
+    <div class="card is-solid questions">
       <h4>Questions:</h4>
       <ul>
         <li>Question about the project idea</li>
@@ -92,10 +89,6 @@
 
     transition: $btn-out;
 
-    h3 {
-      color:mix($accent, black, 40%);
-    }
-
     &:hover {
       background: mix($accent, transparent, 10%);
       transition: $btn-in;
@@ -110,14 +103,18 @@
   }
 
   .questions {
+
+
     ul {
-      list-style: none;
+      // list-style: none;
+      padding-left: 1rem;
     }
 
     h4 {
       margin-bottom: 1rem;
       font-size: 1.2rem;
     }
+
 
     li {
       opacity: 0.6;
@@ -144,22 +141,18 @@
   .graph {
     padding-bottom: calc(1rem - 1px);
 
-    // background: mix(mix($accent, black, 40%), transparent, 5%);
-    // border-color: transparent;
-
     display: flex;
     flex-direction: column;
     flex-grow: 0;
 
     h4 {
       margin-bottom: 0.5rem;
-      color: mix($accent, black, 20%);
       font-size: 1.2rem;
     }
 
     p {
       margin-bottom: 2rem;
-      color: mix($accent, black, 20%);
+      color: mix($accent, black, 40%);
       opacity: 0.6;
     }
 
