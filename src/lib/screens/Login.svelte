@@ -45,6 +45,10 @@
     height: 100vh;
     background: $accent;
     color: white;
+
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-y: overlay;
   }
 
   .container {
@@ -52,11 +56,13 @@
     height: 100%;
     padding: 2rem;
 
-    // display: flex;
-    // flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     // justify-content: center;
 
     h2 {
+      width: 100%;
       margin-bottom: 1rem;
       font-size: 2rem;
     }
@@ -68,17 +74,25 @@
     form {
       input[type="email"],
       input[type="password"] {
-        height: 4rem;
+        height: 3rem;
+        padding: 0;
 
-        background: rgba(255, 255, 255, 0.2);
+        background: none;
         color: white;
-        font-weight: 600;
         border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 0;
+        font-weight: 600;
+      }
+
+      input[type="email"] {
+        margin-bottom: 2rem;
       }
     }
   }
 
   .container form {
+    width: 100%;
     position: relative;
 
     & > * {
@@ -95,7 +109,7 @@
 
   label {
     color: rgba(255, 255, 255, 0.8);
-    line-height: 2rem;
+    line-height: 1rem;
   }
 
   input[type="submit"] {
