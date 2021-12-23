@@ -27,12 +27,12 @@
 
   ul {
     list-style: none;
-    margin-top: -1rem;
+    margin-top: -0.5rem;
   }
 
   li {
     margin-right: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     display: inline-block;
 
     button {

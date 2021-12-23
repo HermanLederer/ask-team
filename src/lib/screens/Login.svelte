@@ -52,6 +52,10 @@
     height: 100%;
     padding: 2rem;
 
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+
     h2 {
       margin-bottom: 1rem;
       font-size: 2rem;
@@ -80,6 +84,13 @@
     & > * {
       margin-bottom: 1rem;
     }
+
+    .iforgor {
+      line-height: 1rem;
+      // text-align: center;
+      display: block;
+      margin-bottom: 2rem;
+    }
   }
 
   label {
@@ -87,15 +98,11 @@
     line-height: 2rem;
   }
 
-  .iforgor {
-    text-align: center;
-    display: block;
-  }
-
   input[type="submit"] {
     height: 3rem;
 
     background: white;
+    color: $accent;
     border: none;
     border-radius: 1.5rem;
     font-weight: 600;

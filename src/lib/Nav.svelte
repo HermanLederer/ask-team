@@ -64,6 +64,7 @@
     bottom: 0;
 
     background: mix($accent, white, 10%);
+    // box-shadow: 0 0 0 0.5rem white;
 
     transition: $trans;
   }

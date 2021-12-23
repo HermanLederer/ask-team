@@ -62,36 +62,43 @@
 </script>
 
 <section class:is-open={isOpen} class:is-hidden={!showFab}>
-  <form id="new-post-form" class="container">
-    <h2>New poll</h2>
+  <div class="scroll">
+    <form id="new-post-form" class="container">
+      <h2>New poll</h2>
 
-    <label for="question">What is the question?</label>
-    <input type="text" name="question" bind:value={post.question} />
+      <label for="question">What is the question?</label>
+      <input type="text" name="question" bind:value={post.question} />
 
-    <span class="label what-tags">Where do you want to post this question?</span>
-    <div class="channels"><Channels bind:selected={post.tags} /></div>
+      <span class="label what-tags"
+        >Where do you want to post this question?</span
+      >
+      <div class="channels"><Channels bind:selected={post.tags} /></div>
 
-    <span class="options-label label">Answer options</span>
-    {#each post.answers as answer, i}
+      <span class="options-label label">Answer options</span>
+
+      {#each post.answers as answer, i}
+        <input
+          type="text"
+          class="option"
+          name={`option${i}`}
+          bind:value={answer.name}
+        />
+      {/each}
+
       <input
-        type="text"
-        name={`option${i}`}
-        class="option"
-        bind:value={answer.name}
+        type="button"
+        value="+"
+        class="add-option"
+        on:click={() => {
+          post.answers = [...post.answers, { name: "", result: 0 }];
+        }}
       />
-    {/each}
 
-    <input
-      type="button"
-      value="+"
-      class="add-option"
-      on:click={() => {
-        post.answers = [...post.answers, { name: "", result: 0 }];
-      }}
-    />
+      <span class="answers-warning">People can also give open answers</span>
+    </form>
+  </div>
 
-    <span class="answers-warning">People can also give open answers</span>
-  </form>
+  <div class="fade" />
 
   <button
     class="fab"
@@ -131,20 +138,25 @@
     margin: auto;
 
     background: white;
+    // background: red;
     border-radius: 50%;
-    box-shadow: 0 0 0 0.5rem white;
 
     transition: $trans;
     overflow: hidden;
 
-    form {
+    .scroll {
       height: 100%;
+      padding: 2rem 0rem 8rem;
+      overflow: hidden;
+    }
+
+    form {
       padding: 0 2rem;
       opacity: 0;
       transition: $trans;
 
       & > * {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
 
         opacity: 0;
 
@@ -153,7 +165,6 @@
         transition: $trans;
       }
 
-      h2,
       label,
       .label {
         margin-top: 2rem;
@@ -178,44 +189,70 @@
         font-weight: 600;
       }
     }
-  }
 
-  .fab {
-    width: 4rem;
-    height: 4rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    .fade {
+      width: 100%;
+      height: 8rem;
+      position: absolute;
+      left: 0;
+      bottom: 0;
 
-    background: $accent;
-    color: white;
-    border-radius: 2rem;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        white 50%,
+        white 100%
+      );
+      // background: red;
 
-    border: none;
-
-    transition: 300ms;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .icon {
-      font-size: 2rem;
-      font-weight: 600;
+      transition: $trans;
+      display: block;
+      pointer-events: none;
     }
 
-    .label {
-      width: 0;
+    .fab {
+      width: 4rem;
+      height: 4rem;
+      position: fixed;
+      bottom: 3rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
 
-      font-weight: 600;
+      background: $accent;
+      color: white;
+      box-shadow: 0 0 0 0.5rem white;
+      border-radius: 2rem;
 
-      overflow: hidden;
+      border: none;
+
+      transition: $trans;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        opacity: 1;
+        font-size: 2rem;
+        font-weight: 600;
+        transition: $trans;
+      }
+
+      .label {
+        position: absolute;
+
+        opacity: 0;
+        font-weight: 600;
+
+        transition: $trans;
+        overflow: hidden;
+      }
     }
   }
 
   .answers-warning {
     margin-top: 1rem;
+    margin-bottom: 0;
     color: rgba(0, 0, 0, 0.4);
     text-align: center;
     display: block;
@@ -242,6 +279,11 @@
 
     border-radius: 0;
 
+    .scroll {
+      overflow-y: scroll;
+      overflow-y: overlay;
+    }
+
     form {
       opacity: 1;
 
@@ -251,21 +293,31 @@
     }
 
     .fab {
-      width: 8rem;
+      width: calc(100% - 4rem);
       bottom: 2rem;
 
       background: $accent;
       color: white;
 
+      .icon {
+        opacity: 0;
+      }
+
       .label {
-        width: auto;
-        margin-left: 1rem;
+        opacity: 1;
+      }
+
+      @media screen and (min-width: 40rem) {
+        width: 40rem - 4rem;
       }
     }
   }
 
   section.is-hidden {
-    transform: scale(0);
+    pointer-events: none;
+    opacity: 0;
+    .fab {
+      transform: scale(0);
+    }
   }
-  // will Star see this comment?
 </style>

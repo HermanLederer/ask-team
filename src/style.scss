@@ -47,6 +47,9 @@ button {
   border: 1px rgba(0, 0, 0, 0.4) solid;
   border-radius: 0.5rem;
   font-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 // Generic elements

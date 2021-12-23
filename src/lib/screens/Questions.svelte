@@ -7,6 +7,7 @@
   import TagFilter from "../TagFilter.svelte";
   import Post from "../Post.svelte";
   import Header from "../Header.svelte";
+  import Progress from "../Progress.svelte";
 
   import type { Content } from "../Post.svelte";
   import { loadPosts } from "../backend";
@@ -18,8 +19,10 @@
   let answered = 0;
   let posts: Content[] = [];
 
+  let nextID = -1;
   window.questions = {
     post(content: Content) {
+      content.id = ++nextID;
       posts = [content, ...posts];
       element.scrollTo(0, document.getElementById("title-questions").offsetTop);
     },
@@ -31,9 +34,10 @@
   let page = -1;
   function load4Posts() {
     loadPosts(++page).forEach((post) => {
+      post.id = ++nextID;
       window.questions.addPost(post);
     });
-    console.log(posts)
+    console.log(posts);
   }
 
   load4Posts();
@@ -47,33 +51,7 @@
   <TagFilter />
 
   <div class="container">
-    <div class="progress card">
-      <h3>Progress</h3>
-      <p>Questions answered today: {answered}/4</p>
-      <div class="bar">
-        <div
-          class="fill"
-          style={`width: max(${Math.min(1, answered / 4) * 100}%, 1rem);`}
-        >
-          <p class="indicator">{(answered / 4) * 100}%</p>
-        </div>
-      </div>
-      {#if answered > 4}
-        <p class="note">
-          Thank you! You answered all recommended and {answered - 4} additional question{answered >
-          5
-            ? "s"
-            : ""}.
-        </p>
-      {:else if answered >= 4}
-        <p class="note">Thank you! You answered all recommended questions!</p>
-      {:else}
-        <p class="note">
-          Please answer {4 - answered} more questions below to help the company and
-          your colleagues create a better work environment.
-        </p>
-      {/if}
-    </div>
+    <!-- <Progress t={answered} max={4} /> -->
 
     <h3 id="title-questions">Questions</h3>
 
@@ -113,76 +91,8 @@
   }
 
   h3 {
-    padding: 2rem 2rem;
+    padding: 1rem 2rem 0rem;
     color: mix($accent, black, 40%);
-  }
-
-  .progress {
-    background: mix($accent, transparent, 5%);
-    border-color: transparent;
-
-    h3 {
-      padding: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin-bottom: 2rem;
-      color: mix(mix($accent, black, 40%), transparent, 40%);
-    }
-
-    .bar {
-      width: 100%;
-      height: 1rem;
-
-      background: mix($accent, transparent, 20%);
-      border-radius: 0.5rem;
-
-      .fill {
-        height: 100%;
-        position: relative;
-
-        background: $accent;
-        border-radius: 0.5rem;
-
-        transition: $trans;
-
-        .indicator {
-          width: 3rem;
-          height: 2rem;
-          position: absolute;
-          right: -1.25rem;
-          top: -2rem;
-
-          color: $accent;
-          font-weight: 600;
-          font-size: 0.8rem;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          &::after {
-            content: "";
-
-            width: 0.5rem;
-            height: 0.5rem;
-            position: absolute;
-            bottom: -0.75rem;
-            left: 1rem;
-
-            background: white;
-            border-radius: 50%;
-
-            display: block;
-          }
-        }
-      }
-    }
-
-    .note {
-      margin: 1rem 0 0;
-    }
   }
 
   #more-questions {

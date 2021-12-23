@@ -18,7 +18,8 @@
 </script>
 
 <script lang="ts">
-  import { fade, scale } from "svelte/transition";
+  import IconKeyboard from "svelte-material-icons/KeyboardOutline.svelte";
+  import { fade } from "svelte/transition";
   import { createEventDispatcher } from "svelte";
 
   export let content: Content;
@@ -91,6 +92,7 @@
     class:is-selected={content.vote === content.answers.length}
   >
     <input type="text" placeholder="Custom answer" bind:value={otherAnswer} />
+    <div class="icon"><IconKeyboard size="2rem" /></div>
     <input type="submit" value="Custom answer" />
   </form>
 
@@ -146,7 +148,8 @@
       margin-top: 0.5rem;
       font-size: 1.2rem;
 
-      word-break: break-all;
+      word-break: break-word;
+      white-space: pre-wrap;
     }
 
     .other-submitted {
@@ -221,6 +224,16 @@
         font-weight: 600;
       }
 
+      .icon {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+
+        color: rgba(0, 0, 0, 0.2);
+
+        transition: $trans;
+      }
+
       input[type="text"] {
         color: rgba(0, 0, 0, 0.6);
         border-color: rgba(0, 0, 0, 0.2);
@@ -259,6 +272,11 @@
         input[type="text"] {
           color: rgba(0, 0, 0, 1);
           border-color: $accent;
+        }
+
+        .icon
+        {
+          opacity: 0;
         }
 
         input[type="submit"] {

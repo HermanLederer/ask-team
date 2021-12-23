@@ -95,7 +95,6 @@ function loadPosts(page: number): Content[] {
   for (let i = 0; i < 4; ++i) {
     if (page * 4 + i < posts.length) {
       res.push(posts[page * 4 + i]);
-      res[res.length - 1].id = (page * 4 + i);
     }
   }
 
