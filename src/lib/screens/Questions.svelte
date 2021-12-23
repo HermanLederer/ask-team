@@ -20,9 +20,12 @@
   let nextID = -1;
   window.questions = {
     post(content: Content) {
-      content.id = ++nextID;
-      posts = [content, ...posts];
-      element.scrollTo(0, document.getElementById("title-questions").offsetTop);
+      const s = document.getElementById("questions").offsetTop / 2;
+      element.scrollTo(0, s);
+      setTimeout(() => {
+        content.id = ++nextID;
+        posts = [content, ...posts];
+      }, 1500);
     },
     addPost(content: Content) {
       posts = [...posts, content];
@@ -41,7 +44,7 @@
 </script>
 
 <section bind:this={element}>
-  <Header title="Questions"/>
+  <Header title="Questions" />
 
   <TagFilter />
 
@@ -49,7 +52,7 @@
     <!-- <Progress t={answered} max={4} /> -->
 
     {#each posts as post (post.id)}
-      <div animate:flip={{ duration: 300, delay: 150 }} in:fade>
+      <div animate:flip={{ duration: 300 }} in:fade id="questions">
         <Post
           content={post}
           on:answered={() => {
