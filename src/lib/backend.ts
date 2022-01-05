@@ -4,23 +4,22 @@ const posts: Content[] = [
   {
     postedOn: 'Jan 18',
     tags: ['COCO'],
-    question: 'Are you satisfied with your work times?',
+    question: 'How was the noodle teams presentation about glucose processing on the 5th of January?',
     answers: [
-      { name: 'Yes totally', result: 10 },
-      { name: 'It is okay', result: 10 },
-      { name: 'Neutral', result: 10 },
-      { name: 'Not really', result: 10 },
-      { name: 'Absolutely not', result: 10 },
+      { name: 'It was very interesting!', result: 10 },
+      { name: 'I cannot recall the whole thing', result: 10 },
+      { name: 'I was unfortunately not able to attend', result: 10 },
+      { name: 'Where was my invitation?', result: 10 },
     ],
   },
   {
     postedOn: 'Jan 12',
     tags: ['General'],
-    question: 'Would you want to see more canteen sessions per month?',
+    question: 'We are looking to launch a new product around the beginning of April of 2022',
     answers: [
-      { name: 'Yes, there should be more', result: 10 },
-      { name: 'The current amount is good', result: 10 },
-      { name: 'No, there should be less', result: 10 },
+      { name: 'Great!', result: 10 },
+      { name: 'Easy, no sweat!', result: 10 },
+      { name: 'What is it?', result: 10 },
     ],
   },
   {
