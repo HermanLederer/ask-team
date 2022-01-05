@@ -17,9 +17,9 @@ const posts: Content[] = [
     tags: ['General'],
     question: 'We are looking to launch a new product around the beginning of April of 2022',
     answers: [
-      { name: 'Great!', result: 10 },
-      { name: 'Easy, no sweat!', result: 10 },
-      { name: 'What is it?', result: 10 },
+      { name: 'Great!', result: 15 },
+      { name: 'Easy, no sweat!', result: 4 },
+      { name: 'What is it?', result: 6 },
     ],
   },
   {
@@ -27,10 +27,10 @@ const posts: Content[] = [
     tags: ['General'],
     question: 'What hobbies do you have? (Feel free to add your own answers!)',
     answers: [
-      { name: 'Football', result: 10 },
-      { name: 'Running', result: 10 },
-      { name: 'Painting', result: 10 },
-      { name: 'Reading', result: 10 },
+      { name: 'Football', result: 20 },
+      { name: 'Running', result: 4 },
+      { name: 'Painting', result: 2 },
+      { name: 'Reading', result: 1 },
     ],
   },
   {
@@ -38,10 +38,10 @@ const posts: Content[] = [
     tags: ['R&D'],
     question: 'Do you feel like your work is valued?',
     answers: [
-      { name: 'Yes, very much so', result: 10 },
+      { name: 'Yes, very much so', result: 11 },
       { name: 'Yes', result: 10 },
-      { name: 'Neutral', result: 10 },
-      { name: 'No', result: 10 },
+      { name: 'Neutral', result: 6 },
+      { name: 'No', result: 21 },
       { name: 'No, not at all', result: 10 },
     ],
   },
@@ -50,9 +50,9 @@ const posts: Content[] = [
     tags: ['R&D'],
     question: 'How do you feel about the meeting yesterday?',
     answers: [
-      { name: 'Intense but necessary', result: 10 },
-      { name: 'Realistic and clear', result: 10 },
-      { name: 'Too harsh', result: 10 },
+      { name: 'Intense but necessary', result: 29 },
+      { name: 'Realistic and clear', result: 1 },
+      { name: 'Too harsh', result: 0 },
     ],
   },
   {
@@ -60,11 +60,11 @@ const posts: Content[] = [
     tags: ['General'],
     question: 'How do you travel to work?',
     answers: [
-      { name: 'Car', result: 10 },
-      { name: 'Bike', result: 10 },
-      { name: 'Public transport', result: 10 },
+      { name: 'Car', result: 12 },
+      { name: 'Bike', result: 15 },
+      { name: 'Public transport', result: 19 },
       { name: 'Walking', result: 10 },
-      { name: 'Motorcycle', result: 10 },
+      { name: 'Motorcycle', result: 1 },
     ],
   },
   {
@@ -80,10 +80,10 @@ const posts: Content[] = [
     question:
       'How satisfied are you with the management for handling the COVID restrictions thus far?',
     answers: [
-      { name: 'Very satisfied', result: 10 },
-      { name: 'Somewhat satisfied', result: 10 },
-      { name: 'Somewhat dissatisfied', result: 10 },
-      { name: 'Very dissatisfied', result: 10 },
+      { name: 'Very satisfied', result: 1 },
+      { name: 'Somewhat satisfied', result: 7 },
+      { name: 'Somewhat dissatisfied', result: 25 },
+      { name: 'Very dissatisfied', result: 5 },
     ],
   },
 ];
